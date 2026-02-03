@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f8f9fa;
+            background: #fafafa;
             color: #2c3e50;
         }
 
@@ -99,18 +99,19 @@
 
         .calendar-day {
             padding: 12px 20px;
-            background: #f8f8f8;
+            background: white;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
             min-width: 80px;
             text-align: center;
             border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .calendar-day:hover:not(.disabled) {
-            background: #f0f0f0;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .calendar-day.active {
@@ -127,11 +128,11 @@
         .dashboard-content {
             flex: 1;
             display: grid;
-            grid-template-columns: 1fr 550px;
-            gap: 40px;
+            grid-template-columns: 1fr 700px;
+            gap: 50px;
             padding: 30px 50px;
             overflow-y: auto;
-            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            background: #fafafa;
         }
 
         /* Meals Section */
@@ -271,14 +272,13 @@
         }
 
         .score-container {
-            background: white;
+            background: transparent;
             border: none;
             border-radius: 12px;
             padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .score-label {
@@ -290,8 +290,8 @@
         }
 
         .score-circle {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             position: relative;
             margin-bottom: 20px;
         }
@@ -302,14 +302,14 @@
 
         .score-circle-bg {
             fill: none;
-            stroke: #f5f5f5;
-            stroke-width: 12;
+            stroke: #f0f0f0;
+            stroke-width: 14;
         }
 
         .score-circle-progress {
             fill: none;
             stroke: #FF8375;
-            stroke-width: 12;
+            stroke-width: 14;
             stroke-linecap: round;
             transition: stroke-dashoffset 1s ease;
         }
@@ -319,26 +319,25 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
             color: #2c3e50;
         }
 
         .progress-bars {
-            background: white;
+            background: transparent;
             border: none;
             border-radius: 12px;
             padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            gap: 24px;
         }
 
         .progress-item {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .progress-header {
@@ -348,27 +347,27 @@
         }
 
         .progress-label {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
             color: #2c3e50;
         }
 
         .progress-values {
-            font-size: 14px;
+            font-size: 15px;
             color: #7f8c8d;
         }
 
         .progress-bar-container {
-            height: 12px;
-            background: #f8f8f8;
-            border-radius: 6px;
+            height: 14px;
+            background: #f0f0f0;
+            border-radius: 7px;
             overflow: hidden;
             position: relative;
         }
 
         .progress-bar-fill {
             height: 100%;
-            border-radius: 6px;
+            border-radius: 7px;
             transition: width 0.8s ease;
             position: relative;
         }
@@ -448,7 +447,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: #f8f9fa;
+            background: #fafafa;
         }
 
         .spinner {
@@ -531,10 +530,10 @@
                     <div class="score-container">
                         <div class="score-label">Score sur 100</div>
                         <div class="score-circle">
-                            <svg width="180" height="180">
-                                <circle class="score-circle-bg" cx="90" cy="90" r="80"></circle>
-                                <circle class="score-circle-progress" cx="90" cy="90" r="80" 
-                                    stroke-dasharray="502.4" stroke-dashoffset="502.4"></circle>
+                            <svg width="200" height="200">
+                                <circle class="score-circle-bg" cx="100" cy="100" r="86"></circle>
+                                <circle class="score-circle-progress" cx="100" cy="100" r="86" 
+                                    stroke-dasharray="540.35" stroke-dashoffset="540.35"></circle>
                             </svg>
                             <div class="score-value" id="scoreValue">0</div>
                         </div>
@@ -768,7 +767,7 @@
         // Update Score Circle
         function updateScore(score) {
             const circle = document.querySelector('.score-circle-progress');
-            const radius = 80;
+            const radius = 86;
             const circumference = 2 * Math.PI * radius;
             const offset = circumference - (score / 100) * circumference;
             
