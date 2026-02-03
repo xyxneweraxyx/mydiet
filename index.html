@@ -477,6 +477,264 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Settings Page */
+        .settings-content {
+            flex: 1;
+            padding: 50px;
+            overflow-y: auto;
+            background: 
+                radial-gradient(ellipse at top, #ffffff 0%, transparent 70%),
+                radial-gradient(ellipse at bottom, #f5f5f5 0%, transparent 70%),
+                #fafafa;
+        }
+
+        .settings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .settings-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .settings-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .settings-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 15px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .setting-description {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-top: 4px;
+        }
+
+        .setting-input {
+            width: 120px;
+            padding: 10px 14px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .setting-input:focus {
+            outline: none;
+            border-color: #FF8375;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: #e8e8e8;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #FF8375;
+        }
+
+        .toggle-switch-handle {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active .toggle-switch-handle {
+            left: 27px;
+        }
+
+        .save-button {
+            width: 100%;
+            padding: 14px;
+            background: #FF8375;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .save-button:hover {
+            background: #ff6b5c;
+            transform: translateY(-2px);
+        }
+
+        .save-button:disabled {
+            background: #e8e8e8;
+            color: #7f8c8d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: 
+                radial-gradient(ellipse at top, #1a1a1a 0%, transparent 70%),
+                radial-gradient(ellipse at bottom, #0f0f0f 0%, transparent 70%),
+                #121212;
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .side-panel {
+            background: #1e1e1e;
+            border-right-color: #2a2a2a;
+        }
+
+        body.dark-mode .side-panel h2,
+        body.dark-mode .nav-item.active {
+            color: white;
+        }
+
+        body.dark-mode .nav-item {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .nav-item:hover {
+            background: #2a2a2a;
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .logout-btn-sidebar {
+            background: #2a2a2a;
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .logout-btn-sidebar:hover {
+            background: #333;
+        }
+
+        body.dark-mode .calendar-day {
+            background: #2a2a2a;
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .calendar-day:hover:not(.disabled) {
+            background: #333;
+        }
+
+        body.dark-mode .calendar-day.active {
+            background: #FF8375;
+            color: white;
+        }
+
+        body.dark-mode .dashboard-content,
+        body.dark-mode .settings-content {
+            background: 
+                radial-gradient(ellipse at top, #1a1a1a 0%, transparent 70%),
+                radial-gradient(ellipse at bottom, #0f0f0f 0%, transparent 70%),
+                #121212;
+        }
+
+        body.dark-mode .section-header h2,
+        body.dark-mode .objectives-section h2,
+        body.dark-mode .settings-title {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .meal-card {
+            background: #1e1e1e;
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .meal-card:hover {
+            background: #252525;
+        }
+
+        body.dark-mode .score-circle-bg {
+            stroke: #2a2a2a;
+        }
+
+        body.dark-mode .score-value {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .score-label,
+        body.dark-mode .progress-label {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .progress-values {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .progress-bar-container {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .settings-section {
+            background: #1e1e1e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .settings-section h3 {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .setting-label {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .setting-description {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .setting-item {
+            border-bottom-color: #2a2a2a;
+        }
+
+        body.dark-mode .setting-input {
+            background: #2a2a2a;
+            border-color: #333;
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .setting-input:focus {
+            border-color: #FF8375;
+        }
     </style>
 </head>
 <body>
@@ -522,7 +780,7 @@
             </div>
 
             <!-- Dashboard Content -->
-            <div class="dashboard-content">
+            <div id="dashboardView" class="dashboard-content">
                 <!-- Meals Section -->
                 <div class="meals-section">
                     <div class="section-header">
@@ -592,6 +850,63 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Settings Content -->
+            <div id="settingsView" class="settings-content hidden">
+                <div class="settings-container">
+                    <h1 class="settings-title">Paramètres</h1>
+
+                    <!-- Objectifs Nutritionnels -->
+                    <div class="settings-section">
+                        <h3>Objectifs Nutritionnels</h3>
+                        <div class="setting-item">
+                            <div>
+                                <div class="setting-label">Protéines (g/jour)</div>
+                                <div class="setting-description">Objectif quotidien en protéines</div>
+                            </div>
+                            <input type="number" class="setting-input" id="proteinInput" value="180" min="0">
+                        </div>
+                        <div class="setting-item">
+                            <div>
+                                <div class="setting-label">Lipides (g/jour)</div>
+                                <div class="setting-description">Objectif quotidien en lipides</div>
+                            </div>
+                            <input type="number" class="setting-input" id="fatInput" value="80" min="0">
+                        </div>
+                        <div class="setting-item">
+                            <div>
+                                <div class="setting-label">Glucides (g/jour)</div>
+                                <div class="setting-description">Objectif quotidien en glucides</div>
+                            </div>
+                            <input type="number" class="setting-input" id="carbsInput" value="180" min="0">
+                        </div>
+                        <div class="setting-item">
+                            <div>
+                                <div class="setting-label">Calories (kcal/jour)</div>
+                                <div class="setting-description">Objectif quotidien en calories</div>
+                            </div>
+                            <input type="number" class="setting-input" id="caloriesInput" value="2150" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Apparence -->
+                    <div class="settings-section">
+                        <h3>Apparence</h3>
+                        <div class="setting-item">
+                            <div>
+                                <div class="setting-label">Mode sombre</div>
+                                <div class="setting-description">Activer le thème sombre</div>
+                            </div>
+                            <div class="toggle-switch" id="darkModeToggle">
+                                <div class="toggle-switch-handle"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <button class="save-button" id="saveSettingsBtn">Sauvegarder</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -599,7 +914,7 @@
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
         import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
-        import { getFirestore, collection, addDoc, query, where, getDocs, orderBy } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+        import { getFirestore, collection, doc, getDoc, setDoc, addDoc, query, where, getDocs, orderBy } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
 
         // Firebase Configuration
         const firebaseConfig = {
@@ -621,6 +936,7 @@
         // State
         let currentUser = null;
         let selectedDate = new Date();
+        let currentView = 'dashboard';
         let objectives = {
             protein: 180,
             fat: 80,
@@ -637,6 +953,21 @@
         const calendarDays = document.getElementById('calendarDays');
         const mealsGrid = document.getElementById('mealsGrid');
         const addMealBtn = document.getElementById('addMealBtn');
+        
+        // Views
+        const dashboardView = document.getElementById('dashboardView');
+        const settingsView = document.getElementById('settingsView');
+        
+        // Nav items
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        // Settings elements
+        const proteinInput = document.getElementById('proteinInput');
+        const fatInput = document.getElementById('fatInput');
+        const carbsInput = document.getElementById('carbsInput');
+        const caloriesInput = document.getElementById('caloriesInput');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const saveSettingsBtn = document.getElementById('saveSettingsBtn');
 
         // Auth State Listener
         onAuthStateChanged(auth, (user) => {
@@ -680,12 +1011,140 @@
             appContainer.classList.remove('hidden');
             renderCalendar();
             loadDayData();
+            navigateTo('dashboard');
         }
+
+        // Navigation
+        function navigateTo(view) {
+            currentView = view;
+            
+            // Update nav items
+            navItems.forEach(item => {
+                if (item.dataset.view === view) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Show/hide views
+            if (view === 'dashboard') {
+                dashboardView.classList.remove('hidden');
+                settingsView.classList.add('hidden');
+            } else if (view === 'settings') {
+                dashboardView.classList.add('hidden');
+                settingsView.classList.remove('hidden');
+                loadSettingsUI();
+            } else {
+                // Other views (library, history) - à implémenter
+                dashboardView.classList.add('hidden');
+                settingsView.classList.add('hidden');
+                alert(`Page "${view}" à venir !`);
+            }
+        }
+
+        // Nav items click
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navigateTo(item.dataset.view);
+            });
+        });
+
+        // Load User Settings from Firestore
+        async function loadUserSettings() {
+            try {
+                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    
+                    // Load objectives
+                    if (data.objectives) {
+                        objectives = data.objectives;
+                    }
+                    
+                    // Load theme
+                    if (data.theme === 'dark') {
+                        document.body.classList.add('dark-mode');
+                    }
+                } else {
+                    // First time user - create default settings
+                    await saveUserSettings();
+                }
+                
+                updateObjectivesDisplay();
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+
+        // Save User Settings to Firestore
+        async function saveUserSettings() {
+            try {
+                const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                
+                await setDoc(doc(db, 'users', currentUser.uid), {
+                    objectives: objectives,
+                    theme: theme,
+                    updatedAt: new Date().toISOString()
+                }, { merge: true });
+                
+                return true;
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                return false;
+            }
+        }
+
+        // Load Settings UI
+        function loadSettingsUI() {
+            proteinInput.value = objectives.protein;
+            fatInput.value = objectives.fat;
+            carbsInput.value = objectives.carbs;
+            caloriesInput.value = objectives.calories;
+            
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeToggle.classList.add('active');
+            } else {
+                darkModeToggle.classList.remove('active');
+            }
+        }
+
+        // Dark Mode Toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.classList.toggle('active');
+        });
+
+        // Save Settings Button
+        saveSettingsBtn.addEventListener('click', async () => {
+            saveSettingsBtn.disabled = true;
+            saveSettingsBtn.textContent = 'Sauvegarde...';
+            
+            // Update objectives from inputs
+            objectives.protein = parseInt(proteinInput.value) || 180;
+            objectives.fat = parseInt(fatInput.value) || 80;
+            objectives.carbs = parseInt(carbsInput.value) || 180;
+            objectives.calories = parseInt(caloriesInput.value) || 2150;
+            
+            const success = await saveUserSettings();
+            
+            if (success) {
+                updateObjectivesDisplay();
+                saveSettingsBtn.textContent = 'Sauvegardé !';
+                setTimeout(() => {
+                    saveSettingsBtn.textContent = 'Sauvegarder';
+                    saveSettingsBtn.disabled = false;
+                }, 2000);
+            } else {
+                saveSettingsBtn.textContent = 'Erreur - Réessayer';
+                saveSettingsBtn.disabled = false;
+            }
+        });
 
         // Load User Data
         async function loadUserData() {
-            // TODO: Load user objectives from Firestore
-            updateObjectivesDisplay();
+            await loadUserSettings();
         }
 
         // Render Calendar
