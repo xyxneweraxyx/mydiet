@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyDiet</title>
+    <script>
+        // Load theme BEFORE page renders to prevent flash
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -585,33 +592,8 @@
             left: 27px;
         }
 
-        .save-button {
-            width: 100%;
-            padding: 14px;
-            background: #FF8375;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .save-button:hover {
-            background: #ff6b5c;
-            transform: translateY(-2px);
-        }
-
-        .save-button:disabled {
-            background: #e8e8e8;
-            color: #7f8c8d;
-            cursor: not-allowed;
-            transform: none;
-        }
-
         /* Dark Mode */
-        body.dark-mode {
+        html.dark-mode body {
             background: 
                 radial-gradient(ellipse at top, #1a1a1a 0%, transparent 70%),
                 radial-gradient(ellipse at bottom, #0f0f0f 0%, transparent 70%),
@@ -619,120 +601,120 @@
             color: #e8e8e8;
         }
 
-        body.dark-mode .side-panel {
+        html.dark-mode .side-panel {
             background: #1e1e1e;
             border-right-color: #2a2a2a;
         }
 
-        body.dark-mode .side-panel h2,
-        body.dark-mode .nav-item.active {
+        html.dark-mode .side-panel h2,
+        html.dark-mode .nav-item.active {
             color: white;
         }
 
-        body.dark-mode .nav-item {
+        html.dark-mode .nav-item {
             color: #b0b0b0;
         }
 
-        body.dark-mode .nav-item:hover {
+        html.dark-mode .nav-item:hover {
             background: #2a2a2a;
             color: #e8e8e8;
         }
 
-        body.dark-mode .logout-btn-sidebar {
+        html.dark-mode .logout-btn-sidebar {
             background: #2a2a2a;
             color: #b0b0b0;
         }
 
-        body.dark-mode .logout-btn-sidebar:hover {
+        html.dark-mode .logout-btn-sidebar:hover {
             background: #333;
         }
 
-        body.dark-mode .calendar-day {
+        html.dark-mode .calendar-day {
             background: #2a2a2a;
             color: #e8e8e8;
         }
 
-        body.dark-mode .calendar-day:hover:not(.disabled) {
+        html.dark-mode .calendar-day:hover:not(.disabled) {
             background: #333;
         }
 
-        body.dark-mode .calendar-day.active {
+        html.dark-mode .calendar-day.active {
             background: #FF8375;
             color: white;
         }
 
-        body.dark-mode .dashboard-content,
-        body.dark-mode .settings-content {
+        html.dark-mode .dashboard-content,
+        html.dark-mode .settings-content {
             background: 
                 radial-gradient(ellipse at top, #1a1a1a 0%, transparent 70%),
                 radial-gradient(ellipse at bottom, #0f0f0f 0%, transparent 70%),
                 #121212;
         }
 
-        body.dark-mode .section-header h2,
-        body.dark-mode .objectives-section h2,
-        body.dark-mode .settings-title {
+        html.dark-mode .section-header h2,
+        html.dark-mode .objectives-section h2,
+        html.dark-mode .settings-title {
             color: #e8e8e8;
         }
 
-        body.dark-mode .meal-card {
+        html.dark-mode .meal-card {
             background: #1e1e1e;
             color: #e8e8e8;
         }
 
-        body.dark-mode .meal-card:hover {
+        html.dark-mode .meal-card:hover {
             background: #252525;
         }
 
-        body.dark-mode .score-circle-bg {
+        html.dark-mode .score-circle-bg {
             stroke: #2a2a2a;
         }
 
-        body.dark-mode .score-value {
+        html.dark-mode .score-value {
             color: #e8e8e8;
         }
 
-        body.dark-mode .score-label,
-        body.dark-mode .progress-label {
+        html.dark-mode .score-label,
+        html.dark-mode .progress-label {
             color: #e8e8e8;
         }
 
-        body.dark-mode .progress-values {
+        html.dark-mode .progress-values {
             color: #b0b0b0;
         }
 
-        body.dark-mode .progress-bar-container {
+        html.dark-mode .progress-bar-container {
             background: #2a2a2a;
         }
 
-        body.dark-mode .settings-section {
+        html.dark-mode .settings-section {
             background: #1e1e1e;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        body.dark-mode .settings-section h3 {
+        html.dark-mode .settings-section h3 {
             color: #e8e8e8;
         }
 
-        body.dark-mode .setting-label {
+        html.dark-mode .setting-label {
             color: #e8e8e8;
         }
 
-        body.dark-mode .setting-description {
+        html.dark-mode .setting-description {
             color: #b0b0b0;
         }
 
-        body.dark-mode .setting-item {
+        html.dark-mode .setting-item {
             border-bottom-color: #2a2a2a;
         }
 
-        body.dark-mode .setting-input {
+        html.dark-mode .setting-input {
             background: #2a2a2a;
             border-color: #333;
             color: #e8e8e8;
         }
 
-        body.dark-mode .setting-input:focus {
+        html.dark-mode .setting-input:focus {
             border-color: #FF8375;
         }
     </style>
@@ -902,9 +884,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Save Button -->
-                    <button class="save-button" id="saveSettingsBtn">Sauvegarder</button>
                 </div>
             </div>
         </div>
@@ -967,7 +946,6 @@
         const carbsInput = document.getElementById('carbsInput');
         const caloriesInput = document.getElementById('caloriesInput');
         const darkModeToggle = document.getElementById('darkModeToggle');
-        const saveSettingsBtn = document.getElementById('saveSettingsBtn');
 
         // Auth State Listener
         onAuthStateChanged(auth, (user) => {
@@ -1063,9 +1041,14 @@
                         objectives = data.objectives;
                     }
                     
-                    // Load theme
-                    if (data.theme === 'dark') {
-                        document.body.classList.add('dark-mode');
+                    // Load theme from Firestore (sync with localStorage)
+                    if (data.theme) {
+                        localStorage.setItem('theme', data.theme);
+                        if (data.theme === 'dark') {
+                            document.documentElement.classList.add('dark-mode');
+                        } else {
+                            document.documentElement.classList.remove('dark-mode');
+                        }
                     }
                 } else {
                     // First time user - create default settings
@@ -1081,7 +1064,7 @@
         // Save User Settings to Firestore
         async function saveUserSettings() {
             try {
-                const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                const theme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
                 
                 await setDoc(doc(db, 'users', currentUser.uid), {
                     objectives: objectives,
@@ -1096,6 +1079,15 @@
             }
         }
 
+        // Auto-save with debounce
+        let saveTimeout = null;
+        function autoSaveSettings() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(async () => {
+                await saveUserSettings();
+            }, 500); // Wait 500ms after last change
+        }
+
         // Load Settings UI
         function loadSettingsUI() {
             proteinInput.value = objectives.protein;
@@ -1103,7 +1095,7 @@
             carbsInput.value = objectives.carbs;
             caloriesInput.value = objectives.calories;
             
-            if (document.body.classList.contains('dark-mode')) {
+            if (document.documentElement.classList.contains('dark-mode')) {
                 darkModeToggle.classList.add('active');
             } else {
                 darkModeToggle.classList.remove('active');
@@ -1112,34 +1104,32 @@
 
         // Dark Mode Toggle
         darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
+            document.documentElement.classList.toggle('dark-mode');
             darkModeToggle.classList.toggle('active');
+            
+            // Save to localStorage immediately (no flash on reload)
+            const theme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            
+            // Save to Firestore
+            autoSaveSettings();
         });
 
-        // Save Settings Button
-        saveSettingsBtn.addEventListener('click', async () => {
-            saveSettingsBtn.disabled = true;
-            saveSettingsBtn.textContent = 'Sauvegarde...';
-            
-            // Update objectives from inputs
-            objectives.protein = parseInt(proteinInput.value) || 180;
-            objectives.fat = parseInt(fatInput.value) || 80;
-            objectives.carbs = parseInt(carbsInput.value) || 180;
-            objectives.calories = parseInt(caloriesInput.value) || 2150;
-            
-            const success = await saveUserSettings();
-            
-            if (success) {
+        // Auto-save on input changes
+        [proteinInput, fatInput, carbsInput, caloriesInput].forEach(input => {
+            input.addEventListener('input', () => {
+                // Update objectives
+                objectives.protein = parseInt(proteinInput.value) || 180;
+                objectives.fat = parseInt(fatInput.value) || 80;
+                objectives.carbs = parseInt(carbsInput.value) || 180;
+                objectives.calories = parseInt(caloriesInput.value) || 2150;
+                
+                // Update display
                 updateObjectivesDisplay();
-                saveSettingsBtn.textContent = 'Sauvegardé !';
-                setTimeout(() => {
-                    saveSettingsBtn.textContent = 'Sauvegarder';
-                    saveSettingsBtn.disabled = false;
-                }, 2000);
-            } else {
-                saveSettingsBtn.textContent = 'Erreur - Réessayer';
-                saveSettingsBtn.disabled = false;
-            }
+                
+                // Auto-save
+                autoSaveSettings();
+            });
         });
 
         // Load User Data
