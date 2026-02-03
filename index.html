@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDiet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+        }
+
+        /* Layout */
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            width: 220px;
+            background: white;
+            border-right: 1px solid #e8e8e8;
+            padding: 30px 20px;
+        }
+
+        .side-panel h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #5a6c7d;
+            font-size: 15px;
+        }
+
+        .nav-item:hover {
+            background: #f5f5f5;
+            color: #2c3e50;
+        }
+
+        .nav-item.active {
+            background: #FF8375;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-bar h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-info img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: #e8e8e8;
+        }
+
+        /* Calendar */
+        .calendar-container {
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .calendar-day {
+            padding: 12px 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 80px;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            background: #e8e8e8;
+            transform: translateY(-2px);
+        }
+
+        .calendar-day.active {
+            background: #FF8375;
+            color: white;
+            border: 1px solid #FF8375;
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            padding: 30px 40px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #fff5f4 0%, #ffffff 100%);
+        }
+
+        /* Meals Section */
+        .meals-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .add-meal-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FF8375;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-meal-btn:hover {
+            background: #ff6b5c;
+            transform: scale(1.1);
+        }
+
+        .meals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .meal-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .meal-card:hover {
+            border-color: #FF8375;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(255, 131, 117, 0.15);
+        }
+
+        .meal-card-image {
+            width: 100%;
+            height: 150px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            overflow: hidden;
+        }
+
+        .meal-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .meal-card-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #2c3e50;
+        }
+
+        .meal-card-category {
+            font-size: 13px;
+            color: #FF8375;
+            margin-bottom: 8px;
+        }
+
+        .meal-card-description {
+            font-size: 14px;
+            color: #7f8c8d;
+            line-height: 1.4;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #95a5a6;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        /* Objectives Section */
+        .objectives-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .objectives-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .score-container {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .score-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .score-circle-bg {
+            fill: none;
+            stroke: #f0f0f0;
+            stroke-width: 12;
+        }
+
+        .score-circle-progress {
+            fill: none;
+            stroke: #FF8375;
+            stroke-width: 12;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease;
+        }
+
+        .score-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .progress-bars {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-label {
+            font-size: 15px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .progress-values {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .progress-bar-container {
+            height: 12px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+
+        .progress-bar-fill.protein {
+            background: linear-gradient(90deg, #FF8375 0%, #ff6b5c 100%);
+        }
+
+        .progress-bar-fill.fat {
+            background: linear-gradient(90deg, #5DADE2 0%, #3498DB 100%);
+        }
+
+        .progress-bar-fill.carbs {
+            background: linear-gradient(90deg, #58D68D 0%, #27AE60 100%);
+        }
+
+        .progress-bar-fill.calories {
+            background: linear-gradient(90deg, #F39C12 0%, #E67E22 100%);
+        }
+
+        /* Login Screen */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FF8375 0%, #ff6b5c 100%);
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .login-card h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        .login-card p {
+            color: #7f8c8d;
+            margin-bottom: 32px;
+        }
+
+        .google-login-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .google-login-btn:hover {
+            background: #f5f5f5;
+            border-color: #FF8375;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f8f9fa;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e8e8e8;
+            border-top-color: #FF8375;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen hidden">
+        <div class="login-card">
+            <h1>MyDiet</h1>
+            <p>Suivez votre alimentation et atteignez vos objectifs</p>
+            <button id="googleLoginBtn" class="google-login-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Se connecter avec Google
+            </button>
+        </div>
+    </div>
+
+    <!-- App Container -->
+    <div id="appContainer" class="app-container hidden">
+        <!-- Side Panel -->
+        <div class="side-panel">
+            <h2>MyDiet</h2>
+            <div class="nav-item active" data-view="dashboard">Dashboard</div>
+            <div class="nav-item" data-view="library">Bibliothèque</div>
+            <div class="nav-item" data-view="history">Historique</div>
+            <div class="nav-item" data-view="settings">Paramètres</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <img id="userPhoto" src="" alt="User">
+                    <span id="userName"></span>
+                    <button id="logoutBtn" class="logout-btn">Déconnexion</button>
+                </div>
+            </div>
+
+            <!-- Calendar -->
+            <div class="calendar-container">
+                <div id="calendarDays"></div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Meals Section -->
+                <div class="meals-section">
+                    <div class="section-header">
+                        <h2>Meals</h2>
+                        <button class="add-meal-btn" id="addMealBtn">+</button>
+                    </div>
+                    <div class="meals-grid" id="mealsGrid">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">🍽️</div>
+                            <p>Aucun repas ajouté aujourd'hui</p>
+                            <p style="margin-top: 8px; font-size: 14px;">Cliquez sur + pour ajouter un repas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objectives Section -->
+                <div class="objectives-section">
+                    <h2>Objectives</h2>
+                    
+                    <div class="score-container">
+                        <div class="score-label">Score sur 100</div>
+                        <div class="score-circle">
+                            <svg width="180" height="180">
+                                <circle class="score-circle-bg" cx="90" cy="90" r="80"></circle>
+                                <circle class="score-circle-progress" cx="90" cy="90" r="80" 
+                                    stroke-dasharray="502.4" stroke-dashoffset="502.4"></circle>
+                            </svg>
+                            <div class="score-value" id="scoreValue">0</div>
+                        </div>
+                    </div>
+
+                    <div class="progress-bars">
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Protéines</span>
+                                <span class="progress-values"><span id="proteinCurrent">0</span>/<span id="proteinTarget">180</span>g</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill protein" id="proteinBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Lipides</span>
+                                <span class="progress-values"><span id="fatCurrent">0</span>/<span id="fatTarget">80</span>g</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill fat" id="fatBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Glucides</span>
+                                <span class="progress-values"><span id="carbsCurrent">0</span>/<span id="carbsTarget">180</span>g</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill carbs" id="carbsBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Calories</span>
+                                <span class="progress-values"><span id="caloriesCurrent">0</span>/<span id="caloriesTarget">2150</span>kcal</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill calories" id="caloriesBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+        import { getFirestore, collection, addDoc, query, where, getDocs, orderBy } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAvJLO37gNyeQ67p7kqu45YXZFHH0fpDF4",
+            authDomain: "mydiet-com.firebaseapp.com",
+            projectId: "mydiet-com",
+            storageBucket: "mydiet-com.firebasestorage.app",
+            messagingSenderId: "469542215916",
+            appId: "1:469542215916:web:56a8c893e74b17332545c9",
+            measurementId: "G-H6P8DQ2DG4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        // State
+        let currentUser = null;
+        let selectedDate = new Date();
+        let objectives = {
+            protein: 180,
+            fat: 80,
+            carbs: 180,
+            calories: 2150
+        };
+
+        // DOM Elements
+        const loading = document.getElementById('loading');
+        const loginScreen = document.getElementById('loginScreen');
+        const appContainer = document.getElementById('appContainer');
+        const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userName = document.getElementById('userName');
+        const userPhoto = document.getElementById('userPhoto');
+        const calendarDays = document.getElementById('calendarDays');
+        const mealsGrid = document.getElementById('mealsGrid');
+        const addMealBtn = document.getElementById('addMealBtn');
+
+        // Auth State Listener
+        onAuthStateChanged(auth, (user) => {
+            loading.classList.add('hidden');
+            if (user) {
+                currentUser = user;
+                showApp();
+                loadUserData();
+            } else {
+                showLogin();
+            }
+        });
+
+        // Google Login
+        googleLoginBtn.addEventListener('click', async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Erreur de connexion. Veuillez réessayer.');
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        });
+
+        // Show/Hide Screens
+        function showLogin() {
+            loginScreen.classList.remove('hidden');
+            appContainer.classList.add('hidden');
+        }
+
+        function showApp() {
+            loginScreen.classList.add('hidden');
+            appContainer.classList.remove('hidden');
+            userName.textContent = currentUser.displayName;
+            userPhoto.src = currentUser.photoURL;
+            renderCalendar();
+            loadDayData();
+        }
+
+        // Load User Data
+        async function loadUserData() {
+            // TODO: Load user objectives from Firestore
+            updateObjectivesDisplay();
+        }
+
+        // Render Calendar
+        function renderCalendar() {
+            const today = new Date();
+            const days = [];
+            
+            // 4 days before
+            for (let i = 4; i > 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                days.push({ date, isPast: true, isFuture: false });
+            }
+            
+            // Today
+            days.push({ date: today, isPast: false, isFuture: false });
+            
+            // 4 days after
+            for (let i = 1; i <= 4; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() + i);
+                days.push({ date, isPast: false, isFuture: true });
+            }
+
+            calendarDays.innerHTML = days.map(({ date, isPast, isFuture }) => {
+                const isSelected = date.toDateString() === selectedDate.toDateString();
+                const classes = ['calendar-day'];
+                if (isSelected) classes.push('active');
+                if (isFuture) classes.push('disabled');
+                
+                return `
+                    <div class="${classes.join(' ')}" data-date="${date.toISOString()}" ${isFuture ? '' : 'onclick="selectDate(this)"'}>
+                        ${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Select Date
+        window.selectDate = function(element) {
+            const dateStr = element.getAttribute('data-date');
+            selectedDate = new Date(dateStr);
+            renderCalendar();
+            loadDayData();
+        };
+
+        // Load Day Data
+        async function loadDayData() {
+            // TODO: Load meals for selected date from Firestore
+            // For now, show empty state
+            mealsGrid.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🍽️</div>
+                    <p>Aucun repas ajouté aujourd'hui</p>
+                    <p style="margin-top: 8px; font-size: 14px;">Cliquez sur + pour ajouter un repas</p>
+                </div>
+            `;
+            
+            updateProgress({
+                protein: 0,
+                fat: 0,
+                carbs: 0,
+                calories: 0
+            });
+        }
+
+        // Update Progress
+        function updateProgress(current) {
+            const proteinPercent = Math.min((current.protein / objectives.protein) * 100, 100);
+            const fatPercent = Math.min((current.fat / objectives.fat) * 100, 100);
+            const carbsPercent = Math.min((current.carbs / objectives.carbs) * 100, 100);
+            const caloriesPercent = Math.min((current.calories / objectives.calories) * 100, 100);
+
+            document.getElementById('proteinBar').style.width = proteinPercent + '%';
+            document.getElementById('fatBar').style.width = fatPercent + '%';
+            document.getElementById('carbsBar').style.width = carbsPercent + '%';
+            document.getElementById('caloriesBar').style.width = caloriesPercent + '%';
+
+            document.getElementById('proteinCurrent').textContent = Math.round(current.protein);
+            document.getElementById('fatCurrent').textContent = Math.round(current.fat);
+            document.getElementById('carbsCurrent').textContent = Math.round(current.carbs);
+            document.getElementById('caloriesCurrent').textContent = Math.round(current.calories);
+
+            // Calculate score
+            const score = Math.round((proteinPercent + fatPercent + carbsPercent + caloriesPercent) / 4);
+            updateScore(score);
+        }
+
+        // Update Score Circle
+        function updateScore(score) {
+            const circle = document.querySelector('.score-circle-progress');
+            const radius = 80;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (score / 100) * circumference;
+            
+            circle.style.strokeDashoffset = offset;
+            document.getElementById('scoreValue').textContent = score;
+        }
+
+        // Update Objectives Display
+        function updateObjectivesDisplay() {
+            document.getElementById('proteinTarget').textContent = objectives.protein;
+            document.getElementById('fatTarget').textContent = objectives.fat;
+            document.getElementById('carbsTarget').textContent = objectives.carbs;
+            document.getElementById('caloriesTarget').textContent = objectives.calories;
+        }
+
+        // Add Meal Button
+        addMealBtn.addEventListener('click', () => {
+            alert('Fonctionnalité "Ajouter un repas" à venir !');
+        });
+    </script>
+</body>
+</html>
