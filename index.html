@@ -193,87 +193,9 @@
         }
 
         .meals-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .meal-card {
-            background: white;
-            border: none;
-            border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeIn 0.3s ease forwards;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .meal-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .meal-card-image {
-            width: 100%;
-            height: 150px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            margin-bottom: 12px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            overflow: hidden;
-        }
-
-        .meal-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .meal-card-name {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #2c3e50;
-        }
-
-        .meal-card-category {
-            font-size: 13px;
-            color: #FF8375;
-            margin-bottom: 8px;
-        }
-
-        .meal-card-description {
-            font-size: 14px;
-            color: #7f8c8d;
-            line-height: 1.4;
-        }
-
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #95a5a6;
-        }
-
-        .empty-state-icon {
-            font-size: 64px;
-            margin-bottom: 16px;
+            flex-direction: column;
+            gap: 16px;
         }
 
         /* Objectives Section */
@@ -1369,6 +1291,245 @@
             background: #c0392b;
         }
 
+        /* Add Meal Modal */
+        .add-meal-modal {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .meal-modal-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .meal-filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meal-filter-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .meal-type-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .meal-type-btn {
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #5a6c7d;
+        }
+
+        .meal-type-btn:hover {
+            background: #e8e8e8;
+        }
+
+        .meal-type-btn.active {
+            background: #FF8375;
+            color: white;
+        }
+
+        .meal-search-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .meal-search-input:focus {
+            border-color: #FF8375;
+            box-shadow: 0 0 0 3px rgba(255, 131, 117, 0.1);
+        }
+
+        .meal-modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .meal-mini-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .meal-mini-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .meal-mini-card-image {
+            width: 100%;
+            height: 100px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0b0b0;
+            font-size: 12px;
+            overflow: hidden;
+        }
+
+        .meal-mini-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .meal-mini-card-name {
+            padding: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #2c3e50;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Meals Section Scrollable */
+        .meals-section {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .meals-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .meals-section::-webkit-scrollbar-track {
+            background: #f5f5f5;
+            border-radius: 3px;
+        }
+
+        .meals-section::-webkit-scrollbar-thumb {
+            background: #d0d0d0;
+            border-radius: 3px;
+        }
+
+        .meals-section::-webkit-scrollbar-thumb:hover {
+            background: #b0b0b0;
+        }
+
+        .meal-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            display: flex;
+            gap: 16px;
+            animation: slideIn 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .meal-card-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0b0b0;
+            font-size: 12px;
+        }
+
+        .meal-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .meal-card-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meal-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .meal-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .meal-card-remove {
+            background: #fee;
+            color: #e74c3c;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .meal-card-remove:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .meal-card-type {
+            font-size: 12px;
+            color: #FF8375;
+        }
+
+        .meal-card-nutrients {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            font-size: 12px;
+            color: #5a6c7d;
+        }
+
         /* Dark mode for library */
         html.dark-mode .library-content {
             background: 
@@ -1449,6 +1610,70 @@
         html.dark-mode .image-upload-container:hover {
             border-color: #FF8375;
             background: #333;
+        }
+
+        html.dark-mode .meal-modal-filters {
+            border-bottom-color: #2a2a2a;
+        }
+
+        html.dark-mode .meal-filter-label {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .meal-type-btn {
+            background: #2a2a2a;
+            color: #b0b0b0;
+        }
+
+        html.dark-mode .meal-type-btn:hover {
+            background: #333;
+        }
+
+        html.dark-mode .meal-type-btn.active {
+            background: #FF8375;
+            color: white;
+        }
+
+        html.dark-mode .meal-search-input {
+            background: #2a2a2a;
+            border-color: #333;
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .meal-mini-card {
+            background: #1e1e1e;
+        }
+
+        html.dark-mode .meal-mini-card-name {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .meal-card {
+            background: #1e1e1e;
+        }
+
+        html.dark-mode .meal-card-title {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .meal-card-remove {
+            background: #3a1f1f;
+        }
+
+        html.dark-mode .meal-card-remove:hover {
+            background: #e74c3c;
+        }
+
+        html.dark-mode .meals-section::-webkit-scrollbar-track {
+            background: #2a2a2a;
+        }
+
+        html.dark-mode .meals-section::-webkit-scrollbar-thumb {
+            background: #444;
+        }
+
+        html.dark-mode .meals-section::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     </style>
 </head>
@@ -1711,6 +1936,52 @@
             <div class="modal-error" id="modalError" style="display: none;"></div>
 
             <form id="recipeForm">
+
+    <!-- Add Meal Modal -->
+    <div class="modal-overlay" id="addMealModal">
+        <div class="modal-content add-meal-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Ajouter un plat</h2>
+                <button class="modal-close" id="closeMealModal">×</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="meal-modal-filters">
+                <div class="meal-filter-group">
+                    <label class="meal-filter-label">Type de plat</label>
+                    <div class="meal-type-buttons">
+                        <button type="button" class="meal-type-btn active" data-type="all">Tous</button>
+                        <button type="button" class="meal-type-btn" data-type="breakfast">Petit-déj</button>
+                        <button type="button" class="meal-type-btn" data-type="lunch">Déjeuner</button>
+                        <button type="button" class="meal-type-btn" data-type="dinner">Dîner</button>
+                    </div>
+                </div>
+
+                <div class="meal-filter-group">
+                    <label class="meal-filter-label">Recherche</label>
+                    <input type="text" class="meal-search-input" id="mealSearchInput" placeholder="Nom du plat ou ingrédient...">
+                </div>
+            </div>
+
+            <!-- Meals Grid -->
+            <div class="meal-modal-grid" id="mealModalGrid">
+                <!-- Mini-cards will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div class="modal-overlay" id="recipeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Ajouter un repas</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+
+            <!-- Error Message -->
+            <div class="modal-error" id="modalError" style="display: none;"></div>
+
+            <form id="recipeForm">
                 <!-- Name -->
                 <div class="form-group">
                     <label class="form-label">Nom du repas *</label>
@@ -1834,6 +2105,7 @@
         let editingRecipeId = null;
         let currentImageFile = null;
         let allRecipes = [];
+        let dailyMeals = []; // Meals for the selected day
         let objectives = {
             protein: 180,
             fat: 80,
@@ -1877,6 +2149,13 @@
         const cancelBtn = document.getElementById('cancelBtn');
         const saveRecipeBtn = document.getElementById('saveRecipeBtn');
         const deleteRecipeBtn = document.getElementById('deleteRecipeBtn');
+
+        // Add Meal Modal elements
+        const addMealModal = document.getElementById('addMealModal');
+        const closeMealModal = document.getElementById('closeMealModal');
+        const mealModalGrid = document.getElementById('mealModalGrid');
+        const mealSearchInput = document.getElementById('mealSearchInput');
+        const mealTypeButtons = document.querySelectorAll('.meal-type-btn');
 
         // Form elements
         const recipeName = document.getElementById('recipeName');
@@ -2093,6 +2372,7 @@
         // Load User Data
         async function loadUserData() {
             await loadUserSettings();
+            await loadRecipes();
         }
 
         // Render Calendar
@@ -2141,15 +2421,7 @@
 
         // Load Day Data
         async function loadDayData() {
-            // TODO: Load meals for selected date from Firestore
-            mealsGrid.innerHTML = '';
-            
-            updateProgress({
-                protein: 0,
-                fat: 0,
-                carbs: 0,
-                calories: 0
-            });
+            await loadDailyMeals();
         }
 
         // Update Progress
@@ -2195,8 +2467,227 @@
 
         // Add Meal Button
         addMealBtn.addEventListener('click', () => {
-            alert('Fonctionnalité "Ajouter un repas" à venir !');
+            openAddMealModal();
         });
+
+        // ==================== ADD MEAL MODAL ====================
+
+        // Open/Close Add Meal Modal
+        function openAddMealModal() {
+            addMealModal.classList.add('active');
+            renderMealModalGrid();
+        }
+
+        function closeAddMealModal() {
+            addMealModal.classList.remove('active');
+            mealSearchInput.value = '';
+            mealTypeButtons.forEach(btn => {
+                if (btn.dataset.type === 'all') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        closeMealModal.addEventListener('click', closeAddMealModal);
+
+        // Close modal on overlay click
+        addMealModal.addEventListener('click', (e) => {
+            if (e.target === addMealModal) {
+                closeAddMealModal();
+            }
+        });
+
+        // Filter meals by type
+        mealTypeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                mealTypeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderMealModalGrid();
+            });
+        });
+
+        // Filter meals by search
+        mealSearchInput.addEventListener('input', () => {
+            renderMealModalGrid();
+        });
+
+        // Render Meal Modal Grid
+        function renderMealModalGrid() {
+            let filtered = [...allRecipes];
+            
+            // Filter by type
+            const activeType = document.querySelector('.meal-type-btn.active');
+            if (activeType && activeType.dataset.type !== 'all') {
+                filtered = filtered.filter(r => r.type === activeType.dataset.type);
+            }
+            
+            // Filter by search
+            const searchTerm = mealSearchInput.value.toLowerCase().trim();
+            if (searchTerm) {
+                filtered = filtered.filter(r => {
+                    const nameMatch = r.name.toLowerCase().includes(searchTerm);
+                    const ingredientMatch = (r.ingredients || []).some(ing => 
+                        ing.toLowerCase().includes(searchTerm)
+                    );
+                    return nameMatch || ingredientMatch;
+                });
+            }
+            
+            if (filtered.length === 0) {
+                mealModalGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: #95a5a6;">
+                        <p>Aucun plat trouvé</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            mealModalGrid.innerHTML = filtered.map(recipe => `
+                <div class="meal-mini-card" data-recipe-id="${recipe.id}">
+                    <div class="meal-mini-card-image">
+                        ${recipe.photoURL ? `<img src="${recipe.photoURL}" alt="${recipe.name}">` : 'Aucune photo'}
+                    </div>
+                    <div class="meal-mini-card-name">${recipe.name}</div>
+                </div>
+            `).join('');
+            
+            // Add click handlers
+            document.querySelectorAll('.meal-mini-card').forEach(card => {
+                card.addEventListener('click', async () => {
+                    const recipeId = card.dataset.recipeId;
+                    await addMealToDay(recipeId);
+                    closeAddMealModal();
+                });
+            });
+        }
+
+        // Add meal to day
+        async function addMealToDay(recipeId) {
+            const recipe = allRecipes.find(r => r.id === recipeId);
+            if (!recipe) return;
+            
+            const meal = {
+                recipeId: recipe.id,
+                name: recipe.name,
+                photoURL: recipe.photoURL,
+                type: recipe.type,
+                ingredients: recipe.ingredients,
+                nutrition: recipe.nutrition,
+                addedAt: new Date().toISOString()
+            };
+            
+            dailyMeals.push(meal);
+            await saveDailyMeals();
+            renderDailyMeals();
+            updateProgressWithAnimation();
+        }
+
+        // Remove meal from day
+        async function removeMealFromDay(index) {
+            dailyMeals.splice(index, 1);
+            await saveDailyMeals();
+            renderDailyMeals();
+            updateProgressWithAnimation();
+        }
+
+        // Render daily meals
+        function renderDailyMeals() {
+            if (dailyMeals.length === 0) {
+                mealsGrid.innerHTML = '';
+                return;
+            }
+            
+            mealsGrid.innerHTML = dailyMeals.map((meal, index) => {
+                const nutrition = meal.nutrition || {};
+                const typeLabels = {
+                    breakfast: 'Petit-déjeuner',
+                    lunch: 'Déjeuner',
+                    dinner: 'Dîner',
+                    unknown: 'Non spécifié'
+                };
+                
+                return `
+                    <div class="meal-card">
+                        <div class="meal-card-image">
+                            ${meal.photoURL ? `<img src="${meal.photoURL}" alt="${meal.name}">` : 'Aucune photo'}
+                        </div>
+                        <div class="meal-card-details">
+                            <div class="meal-card-header">
+                                <div>
+                                    <div class="meal-card-title">${meal.name}</div>
+                                    <div class="meal-card-type">${typeLabels[meal.type] || typeLabels.unknown}</div>
+                                </div>
+                                <button class="meal-card-remove" data-index="${index}">×</button>
+                            </div>
+                            <div class="meal-card-nutrients">
+                                <div>Protéines: ${nutrition.protein || 0}g</div>
+                                <div>Lipides: ${nutrition.fat || 0}g</div>
+                                <div>Glucides: ${nutrition.carbs || 0}g</div>
+                                <div>Calories: ${nutrition.calories || 0}kcal</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add remove handlers
+            document.querySelectorAll('.meal-card-remove').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const index = parseInt(btn.dataset.index);
+                    await removeMealFromDay(index);
+                });
+            });
+        }
+
+        // Save daily meals to Firestore
+        async function saveDailyMeals() {
+            try {
+                const dateKey = selectedDate.toISOString().split('T')[0]; // YYYY-MM-DD
+                await setDoc(doc(db, 'users', currentUser.uid, 'dailyMeals', dateKey), {
+                    meals: dailyMeals,
+                    updatedAt: new Date().toISOString()
+                });
+            } catch (error) {
+                console.error('Error saving daily meals:', error);
+            }
+        }
+
+        // Load daily meals from Firestore
+        async function loadDailyMeals() {
+            try {
+                const dateKey = selectedDate.toISOString().split('T')[0];
+                const dayDoc = await getDoc(doc(db, 'users', currentUser.uid, 'dailyMeals', dateKey));
+                
+                if (dayDoc.exists()) {
+                    dailyMeals = dayDoc.data().meals || [];
+                } else {
+                    dailyMeals = [];
+                }
+                
+                renderDailyMeals();
+                updateProgressWithAnimation();
+            } catch (error) {
+                console.error('Error loading daily meals:', error);
+                dailyMeals = [];
+            }
+        }
+
+        // Update progress with animation
+        function updateProgressWithAnimation() {
+            const current = dailyMeals.reduce((acc, meal) => {
+                const n = meal.nutrition || {};
+                return {
+                    protein: acc.protein + (n.protein || 0),
+                    fat: acc.fat + (n.fat || 0),
+                    carbs: acc.carbs + (n.carbs || 0),
+                    calories: acc.calories + (n.calories || 0)
+                };
+            }, { protein: 0, fat: 0, carbs: 0, calories: 0 });
+
+            updateProgress(current);
+        }
 
         // ==================== LIBRARY FUNCTIONS ====================
 
