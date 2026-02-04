@@ -717,6 +717,702 @@
         html.dark-mode .setting-input:focus {
             border-color: #FF8375;
         }
+
+        /* Library Page */
+        .library-content {
+            flex: 1;
+            padding: 50px;
+            overflow-y: auto;
+            background: 
+                radial-gradient(ellipse at top, #ffffff 0%, transparent 70%),
+                radial-gradient(ellipse at bottom, #f5f5f5 0%, transparent 70%),
+                #fafafa;
+        }
+
+        .library-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .library-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .add-recipe-btn {
+            padding: 12px 24px;
+            background: #FF8375;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .add-recipe-btn:hover {
+            background: #ff6b5c;
+            transform: translateY(-2px);
+        }
+
+        /* Filters */
+        .filters-container {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .filter-type-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-type-btn {
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-type-btn:hover {
+            background: #e8e8e8;
+        }
+
+        .filter-type-btn.active {
+            background: #FF8375;
+            color: white;
+        }
+
+        .slider-container {
+            margin-bottom: 16px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .slider-label {
+            font-size: 13px;
+            color: #5a6c7d;
+        }
+
+        .slider-values {
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        .range-slider {
+            position: relative;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .range-slider-track {
+            position: absolute;
+            height: 100%;
+            background: #FF8375;
+            border-radius: 3px;
+        }
+
+        .range-input-container {
+            position: relative;
+            width: 100%;
+            height: 6px;
+        }
+
+        .range-input {
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            pointer-events: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #FF8375;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .range-input::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #FF8375;
+            cursor: pointer;
+            pointer-events: auto;
+            border: none;
+        }
+
+        .ingredient-search-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .ingredient-search-input:focus {
+            border-color: #FF8375;
+            box-shadow: 0 0 0 3px rgba(255, 131, 117, 0.1);
+        }
+
+        /* Recipes Grid */
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .recipe-card-image {
+            width: 100%;
+            height: 180px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0b0b0;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .recipe-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recipe-card-content {
+            padding: 16px;
+        }
+
+        .recipe-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .recipe-card-type {
+            font-size: 12px;
+            color: #FF8375;
+            margin-bottom: 8px;
+        }
+
+        .recipe-card-description {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .recipe-card-nutrients {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .nutrient-item {
+            color: #5a6c7d;
+        }
+
+        .nutrient-value {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: #e8e8e8;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #FF8375;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            min-height: 80px;
+            resize: vertical;
+            transition: all 0.2s ease;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #FF8375;
+        }
+
+        /* Image Upload */
+        .image-upload-container {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #e8e8e8;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-upload-container:hover {
+            border-color: #FF8375;
+            background: #fff5f4;
+        }
+
+        .image-upload-container.has-image {
+            border: none;
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-upload-placeholder {
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        .image-upload-icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .image-remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .image-remove-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        /* Ingredients List */
+        .ingredients-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .add-ingredient-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #FF8375;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-ingredient-btn:hover {
+            background: #ff6b5c;
+            transform: scale(1.1);
+        }
+
+        .ingredient-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ingredient-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ingredient-input:focus {
+            outline: none;
+            border-color: #FF8375;
+        }
+
+        .remove-ingredient-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: #f5f5f5;
+            border: none;
+            color: #e74c3c;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .remove-ingredient-btn:hover {
+            background: #ffe8e6;
+        }
+
+        /* Nutrient Sliders */
+        .nutrient-slider-group {
+            margin-bottom: 20px;
+        }
+
+        .nutrient-slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .nutrient-slider-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .nutrient-value-input {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: 600;
+            color: #FF8375;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nutrient-value-input:hover {
+            background: #f5f5f5;
+        }
+
+        .nutrient-value-input:focus {
+            outline: none;
+            border-color: #FF8375;
+            background: white;
+            cursor: text;
+        }
+
+        .nutrient-slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #f0f0f0;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .nutrient-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF8375;
+            cursor: pointer;
+        }
+
+        .nutrient-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF8375;
+            cursor: pointer;
+            border: none;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 12px;
+            background: #f5f5f5;
+            color: #2c3e50;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 12px;
+            background: #FF8375;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: #ff6b5c;
+        }
+
+        .btn-danger {
+            padding: 12px 24px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        /* Dark mode for library */
+        html.dark-mode .library-content {
+            background: 
+                radial-gradient(ellipse at top, #1a1a1a 0%, transparent 70%),
+                radial-gradient(ellipse at bottom, #0f0f0f 0%, transparent 70%),
+                #121212;
+        }
+
+        html.dark-mode .library-title {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .filters-container {
+            background: #1e1e1e;
+        }
+
+        html.dark-mode .filter-label,
+        html.dark-mode .filter-type-btn {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .filter-type-btn {
+            background: #2a2a2a;
+        }
+
+        html.dark-mode .filter-type-btn:hover {
+            background: #333;
+        }
+
+        html.dark-mode .recipe-card {
+            background: #1e1e1e;
+        }
+
+        html.dark-mode .recipe-card-title,
+        html.dark-mode .nutrient-value {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .modal-content {
+            background: #1e1e1e;
+        }
+
+        html.dark-mode .modal-title,
+        html.dark-mode .form-label,
+        html.dark-mode .nutrient-slider-label {
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .form-input,
+        html.dark-mode .form-textarea,
+        html.dark-mode .ingredient-input,
+        html.dark-mode .ingredient-search-input {
+            background: #2a2a2a;
+            border-color: #333;
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .btn-secondary {
+            background: #2a2a2a;
+            color: #e8e8e8;
+        }
+
+        html.dark-mode .btn-secondary:hover {
+            background: #333;
+        }
+
+        html.dark-mode .image-upload-container {
+            border-color: #333;
+            background: #2a2a2a;
+        }
+
+        html.dark-mode .image-upload-container:hover {
+            border-color: #FF8375;
+            background: #333;
+        }
     </style>
 </head>
 <body>
@@ -886,6 +1582,185 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Library Content -->
+            <div id="libraryView" class="library-content hidden">
+                <div class="library-header">
+                    <h1 class="library-title">Bibliothèque</h1>
+                    <button class="add-recipe-btn" id="addRecipeBtn">+ Ajouter un repas</button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-container">
+                    <div class="filter-section">
+                        <div class="filter-label">Type de plat</div>
+                        <div class="filter-type-buttons">
+                            <button class="filter-type-btn active" data-type="all">Tous</button>
+                            <button class="filter-type-btn" data-type="breakfast">Petit-déjeuner</button>
+                            <button class="filter-type-btn" data-type="lunch">Déjeuner</button>
+                            <button class="filter-type-btn" data-type="dinner">Dîner</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-label">Filtrer par apports</div>
+                        
+                        <div class="slider-container">
+                            <div class="slider-header">
+                                <span class="slider-label">Protéines</span>
+                                <span class="slider-values"><span id="proteinFilterMin">10</span>g - <span id="proteinFilterMax">100</span>g+</span>
+                            </div>
+                            <div class="range-input-container">
+                                <input type="range" class="range-input" id="proteinMinSlider" min="0" max="100" value="10">
+                                <input type="range" class="range-input" id="proteinMaxSlider" min="0" max="100" value="100">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-header">
+                                <span class="slider-label">Lipides</span>
+                                <span class="slider-values"><span id="fatFilterMin">5</span>g - <span id="fatFilterMax">50</span>g+</span>
+                            </div>
+                            <div class="range-input-container">
+                                <input type="range" class="range-input" id="fatMinSlider" min="0" max="50" value="5">
+                                <input type="range" class="range-input" id="fatMaxSlider" min="0" max="50" value="50">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-header">
+                                <span class="slider-label">Glucides</span>
+                                <span class="slider-values"><span id="carbsFilterMin">10</span>g - <span id="carbsFilterMax">100</span>g+</span>
+                            </div>
+                            <div class="range-input-container">
+                                <input type="range" class="range-input" id="carbsMinSlider" min="0" max="100" value="10">
+                                <input type="range" class="range-input" id="carbsMaxSlider" min="0" max="100" value="100">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-header">
+                                <span class="slider-label">Calories</span>
+                                <span class="slider-values"><span id="caloriesFilterMin">500</span> - <span id="caloriesFilterMax">1500</span>+ kcal</span>
+                            </div>
+                            <div class="range-input-container">
+                                <input type="range" class="range-input" id="caloriesMinSlider" min="0" max="1500" step="50" value="500">
+                                <input type="range" class="range-input" id="caloriesMaxSlider" min="0" max="1500" step="50" value="1500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-label">Filtrer par ingrédient</div>
+                        <input type="text" id="ingredientSearchFilter" class="ingredient-search-input" placeholder="Rechercher un ingrédient...">
+                    </div>
+                </div>
+
+                <!-- Recipes Grid -->
+                <div class="recipes-grid" id="recipesGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div class="modal-overlay" id="recipeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Ajouter un repas</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+
+            <form id="recipeForm">
+                <!-- Name -->
+                <div class="form-group">
+                    <label class="form-label">Nom du repas *</label>
+                    <input type="text" class="form-input" id="recipeName" required placeholder="Ex: Burger maison">
+                </div>
+
+                <!-- Image Upload -->
+                <div class="form-group">
+                    <label class="form-label">Photo</label>
+                    <div class="image-upload-container" id="imageUploadContainer">
+                        <div class="image-upload-placeholder">
+                            <div class="image-upload-icon">📷</div>
+                            <div>Cliquez ou glissez une image</div>
+                        </div>
+                        <img id="imagePreview" class="image-preview" style="display: none;">
+                        <button type="button" class="image-remove-btn" id="imageRemoveBtn" style="display: none;">×</button>
+                    </div>
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                </div>
+
+                <!-- Type -->
+                <div class="form-group">
+                    <label class="form-label">Type de repas</label>
+                    <select class="form-input" id="recipeType">
+                        <option value="unknown">Non spécifié</option>
+                        <option value="breakfast">Petit-déjeuner</option>
+                        <option value="lunch">Déjeuner</option>
+                        <option value="dinner">Dîner</option>
+                    </select>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label class="form-label">Description (optionnel)</label>
+                    <textarea class="form-textarea" id="recipeDescription" placeholder="Notes sur ce repas..."></textarea>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="form-group">
+                    <div class="ingredients-header">
+                        <label class="form-label">Ingrédients</label>
+                        <button type="button" class="add-ingredient-btn" id="addIngredientBtn">+</button>
+                    </div>
+                    <div id="ingredientsList"></div>
+                </div>
+
+                <!-- Nutrients -->
+                <div class="form-group">
+                    <label class="form-label">Apports nutritionnels</label>
+                    
+                    <div class="nutrient-slider-group">
+                        <div class="nutrient-slider-header">
+                            <span class="nutrient-slider-label">Protéines</span>
+                            <input type="number" class="nutrient-value-input" id="proteinValue" value="0" min="0" max="100">
+                        </div>
+                        <input type="range" class="nutrient-slider" id="proteinSlider" min="0" max="100" value="0">
+                    </div>
+
+                    <div class="nutrient-slider-group">
+                        <div class="nutrient-slider-header">
+                            <span class="nutrient-slider-label">Lipides</span>
+                            <input type="number" class="nutrient-value-input" id="fatValue" value="0" min="0" max="50">
+                        </div>
+                        <input type="range" class="nutrient-slider" id="fatSlider" min="0" max="50" value="0">
+                    </div>
+
+                    <div class="nutrient-slider-group">
+                        <div class="nutrient-slider-header">
+                            <span class="nutrient-slider-label">Glucides</span>
+                            <input type="number" class="nutrient-value-input" id="carbsValue" value="0" min="0" max="100">
+                        </div>
+                        <input type="range" class="nutrient-slider" id="carbsSlider" min="0" max="100" value="0">
+                    </div>
+
+                    <div class="nutrient-slider-group">
+                        <div class="nutrient-slider-header">
+                            <span class="nutrient-slider-label">Calories</span>
+                            <input type="number" class="nutrient-value-input" id="caloriesValue" value="0" min="0" max="1500">
+                        </div>
+                        <input type="range" class="nutrient-slider" id="caloriesSlider" min="0" max="1500" step="10" value="0">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Annuler</button>
+                    <button type="button" class="btn-danger" id="deleteRecipeBtn" style="display: none;">Supprimer</button>
+                    <button type="submit" class="btn-primary" id="saveRecipeBtn">Sauvegarder</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -893,7 +1768,8 @@
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
         import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
-        import { getFirestore, collection, doc, getDoc, setDoc, addDoc, query, where, getDocs, orderBy } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+        import { getFirestore, collection, doc, getDoc, setDoc, addDoc, query, where, getDocs, orderBy, deleteDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+        import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js';
 
         // Firebase Configuration
         const firebaseConfig = {
@@ -910,12 +1786,16 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+        const storage = getStorage(app);
         const provider = new GoogleAuthProvider();
 
         // State
         let currentUser = null;
         let selectedDate = new Date();
         let currentView = 'dashboard';
+        let editingRecipeId = null;
+        let currentImageFile = null;
+        let allRecipes = [];
         let objectives = {
             protein: 180,
             fat: 80,
@@ -936,6 +1816,7 @@
         // Views
         const dashboardView = document.getElementById('dashboardView');
         const settingsView = document.getElementById('settingsView');
+        const libraryView = document.getElementById('libraryView');
         
         // Nav items
         const navItems = document.querySelectorAll('.nav-item');
@@ -946,6 +1827,41 @@
         const carbsInput = document.getElementById('carbsInput');
         const caloriesInput = document.getElementById('caloriesInput');
         const darkModeToggle = document.getElementById('darkModeToggle');
+
+        // Library elements
+        const addRecipeBtn = document.getElementById('addRecipeBtn');
+        const recipesGrid = document.getElementById('recipesGrid');
+        const recipeModal = document.getElementById('recipeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalClose = document.getElementById('modalClose');
+        const recipeForm = document.getElementById('recipeForm');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const saveRecipeBtn = document.getElementById('saveRecipeBtn');
+        const deleteRecipeBtn = document.getElementById('deleteRecipeBtn');
+
+        // Form elements
+        const recipeName = document.getElementById('recipeName');
+        const recipeType = document.getElementById('recipeType');
+        const recipeDescription = document.getElementById('recipeDescription');
+        const imageUploadContainer = document.getElementById('imageUploadContainer');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const imageRemoveBtn = document.getElementById('imageRemoveBtn');
+        const ingredientsList = document.getElementById('ingredientsList');
+        const addIngredientBtn = document.getElementById('addIngredientBtn');
+
+        // Nutrient inputs
+        const proteinValue = document.getElementById('proteinValue');
+        const proteinSlider = document.getElementById('proteinSlider');
+        const fatValue = document.getElementById('fatValue');
+        const fatSlider = document.getElementById('fatSlider');
+        const carbsValue = document.getElementById('carbsValue');
+        const carbsSlider = document.getElementById('carbsSlider');
+        const caloriesValue = document.getElementById('caloriesValue');
+        const caloriesSlider = document.getElementById('caloriesSlider');
+
+        // Filter elements
+        const filterTypeButtons = document.querySelectorAll('.filter-type-btn');
 
         // Auth State Listener
         onAuthStateChanged(auth, (user) => {
@@ -1006,17 +1922,20 @@
             });
             
             // Show/hide views
+            dashboardView.classList.add('hidden');
+            settingsView.classList.add('hidden');
+            libraryView.classList.add('hidden');
+            
             if (view === 'dashboard') {
                 dashboardView.classList.remove('hidden');
-                settingsView.classList.add('hidden');
             } else if (view === 'settings') {
-                dashboardView.classList.add('hidden');
                 settingsView.classList.remove('hidden');
                 loadSettingsUI();
+            } else if (view === 'library') {
+                libraryView.classList.remove('hidden');
+                loadRecipes();
             } else {
-                // Other views (library, history) - à implémenter
-                dashboardView.classList.add('hidden');
-                settingsView.classList.add('hidden');
+                // Other views (history) - à implémenter
                 alert(`Page "${view}" à venir !`);
             }
         }
@@ -1239,6 +2158,416 @@
         addMealBtn.addEventListener('click', () => {
             alert('Fonctionnalité "Ajouter un repas" à venir !');
         });
+
+        // ==================== LIBRARY FUNCTIONS ====================
+
+        // Open/Close Modal
+        function openRecipeModal(recipeId = null) {
+            editingRecipeId = recipeId;
+            
+            if (recipeId) {
+                // Edit mode
+                const recipe = allRecipes.find(r => r.id === recipeId);
+                if (recipe) {
+                    modalTitle.textContent = 'Modifier le repas';
+                    recipeName.value = recipe.name;
+                    recipeType.value = recipe.type || 'unknown';
+                    recipeDescription.value = recipe.description || '';
+                    
+                    // Load image
+                    if (recipe.photoURL) {
+                        imagePreview.src = recipe.photoURL;
+                        imagePreview.style.display = 'block';
+                        imageRemoveBtn.style.display = 'block';
+                        imageUploadContainer.classList.add('has-image');
+                    }
+                    
+                    // Load ingredients
+                    ingredientsList.innerHTML = '';
+                    (recipe.ingredients || []).forEach(ing => addIngredientField(ing));
+                    
+                    // Load nutrients
+                    const nutrition = recipe.nutrition || {};
+                    proteinValue.value = nutrition.protein || 0;
+                    proteinSlider.value = nutrition.protein || 0;
+                    fatValue.value = nutrition.fat || 0;
+                    fatSlider.value = nutrition.fat || 0;
+                    carbsValue.value = nutrition.carbs || 0;
+                    carbsSlider.value = nutrition.carbs || 0;
+                    caloriesValue.value = nutrition.calories || 0;
+                    caloriesSlider.value = nutrition.calories || 0;
+                    
+                    deleteRecipeBtn.style.display = 'block';
+                }
+            } else {
+                // Add mode
+                modalTitle.textContent = 'Ajouter un repas';
+                recipeForm.reset();
+                ingredientsList.innerHTML = '';
+                imagePreview.style.display = 'none';
+                imageRemoveBtn.style.display = 'none';
+                imageUploadContainer.classList.remove('has-image');
+                deleteRecipeBtn.style.display = 'none';
+                currentImageFile = null;
+            }
+            
+            recipeModal.classList.add('active');
+        }
+
+        function closeRecipeModal() {
+            recipeModal.classList.remove('active');
+            editingRecipeId = null;
+            currentImageFile = null;
+        }
+
+        addRecipeBtn.addEventListener('click', () => openRecipeModal());
+        modalClose.addEventListener('click', closeRecipeModal);
+        cancelBtn.addEventListener('click', closeRecipeModal);
+
+        // Close modal on overlay click
+        recipeModal.addEventListener('click', (e) => {
+            if (e.target === recipeModal) {
+                closeRecipeModal();
+            }
+        });
+
+        // Image Upload
+        imageUploadContainer.addEventListener('click', () => {
+            if (!imageUploadContainer.classList.contains('has-image')) {
+                imageInput.click();
+            }
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                currentImageFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    imageRemoveBtn.style.display = 'block';
+                    imageUploadContainer.classList.add('has-image');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        imageRemoveBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            imagePreview.src = '';
+            imagePreview.style.display = 'none';
+            imageRemoveBtn.style.display = 'none';
+            imageUploadContainer.classList.remove('has-image');
+            imageInput.value = '';
+            currentImageFile = null;
+        });
+
+        // Drag and drop
+        imageUploadContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            imageUploadContainer.style.borderColor = '#FF8375';
+        });
+
+        imageUploadContainer.addEventListener('dragleave', () => {
+            imageUploadContainer.style.borderColor = '#e8e8e8';
+        });
+
+        imageUploadContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            imageUploadContainer.style.borderColor = '#e8e8e8';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                currentImageFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    imageRemoveBtn.style.display = 'block';
+                    imageUploadContainer.classList.add('has-image');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Ingredients Management
+        function addIngredientField(value = '') {
+            const div = document.createElement('div');
+            div.className = 'ingredient-item';
+            div.innerHTML = `
+                <input type="text" class="ingredient-input" placeholder="Ex: Pain burger" value="${value}">
+                <button type="button" class="remove-ingredient-btn">×</button>
+            `;
+            
+            div.querySelector('.remove-ingredient-btn').addEventListener('click', () => {
+                div.remove();
+            });
+            
+            ingredientsList.appendChild(div);
+        }
+
+        addIngredientBtn.addEventListener('click', () => addIngredientField());
+
+        // Sync Sliders with Inputs
+        function syncSliderAndInput(slider, input) {
+            slider.addEventListener('input', () => {
+                input.value = slider.value;
+            });
+            
+            input.addEventListener('input', () => {
+                slider.value = input.value;
+            });
+        }
+
+        syncSliderAndInput(proteinSlider, proteinValue);
+        syncSliderAndInput(fatSlider, fatValue);
+        syncSliderAndInput(carbsSlider, carbsValue);
+        syncSliderAndInput(caloriesSlider, caloriesValue);
+
+        // Save Recipe
+        recipeForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            saveRecipeBtn.disabled = true;
+            saveRecipeBtn.textContent = 'Sauvegarde...';
+            
+            try {
+                // Get ingredients
+                const ingredients = Array.from(ingredientsList.querySelectorAll('.ingredient-input'))
+                    .map(input => input.value.trim())
+                    .filter(val => val);
+                
+                // Prepare recipe data
+                const recipeData = {
+                    name: recipeName.value.trim(),
+                    type: recipeType.value,
+                    description: recipeDescription.value.trim(),
+                    ingredients: ingredients,
+                    nutrition: {
+                        protein: parseInt(proteinValue.value) || 0,
+                        fat: parseInt(fatValue.value) || 0,
+                        carbs: parseInt(carbsValue.value) || 0,
+                        calories: parseInt(caloriesValue.value) || 0
+                    },
+                    updatedAt: new Date().toISOString()
+                };
+                
+                // Upload image if new
+                if (currentImageFile) {
+                    const imageRef = ref(storage, `users/${currentUser.uid}/recipes/${Date.now()}_${currentImageFile.name}`);
+                    await uploadBytes(imageRef, currentImageFile);
+                    recipeData.photoURL = await getDownloadURL(imageRef);
+                }
+                
+                if (editingRecipeId) {
+                    // Update existing recipe
+                    await updateDoc(doc(db, 'users', currentUser.uid, 'recipes', editingRecipeId), recipeData);
+                } else {
+                    // Create new recipe
+                    recipeData.createdAt = new Date().toISOString();
+                    await addDoc(collection(db, 'users', currentUser.uid, 'recipes'), recipeData);
+                }
+                
+                closeRecipeModal();
+                await loadRecipes();
+                
+            } catch (error) {
+                console.error('Error saving recipe:', error);
+                alert('Erreur lors de la sauvegarde. Réessayez.');
+            }
+            
+            saveRecipeBtn.disabled = false;
+            saveRecipeBtn.textContent = 'Sauvegarder';
+        });
+
+        // Delete Recipe
+        deleteRecipeBtn.addEventListener('click', async () => {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer ce repas ?')) return;
+            
+            try {
+                // Delete from Firestore
+                await deleteDoc(doc(db, 'users', currentUser.uid, 'recipes', editingRecipeId));
+                
+                // Delete image from Storage if exists
+                const recipe = allRecipes.find(r => r.id === editingRecipeId);
+                if (recipe && recipe.photoURL) {
+                    try {
+                        const imageRef = ref(storage, recipe.photoURL);
+                        await deleteObject(imageRef);
+                    } catch (err) {
+                        console.log('Image already deleted or not found');
+                    }
+                }
+                
+                closeRecipeModal();
+                await loadRecipes();
+                
+            } catch (error) {
+                console.error('Error deleting recipe:', error);
+                alert('Erreur lors de la suppression. Réessayez.');
+            }
+        });
+
+        // Load Recipes from Firestore
+        async function loadRecipes() {
+            try {
+                const recipesQuery = query(
+                    collection(db, 'users', currentUser.uid, 'recipes'),
+                    orderBy('createdAt', 'desc')
+                );
+                
+                const snapshot = await getDocs(recipesQuery);
+                allRecipes = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                
+                renderRecipes();
+                
+            } catch (error) {
+                console.error('Error loading recipes:', error);
+            }
+        }
+
+        // Render Recipes
+        function renderRecipes() {
+            if (allRecipes.length === 0) {
+                recipesGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #95a5a6;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">📖</div>
+                        <p>Aucun repas enregistré</p>
+                        <p style="margin-top: 8px; font-size: 14px;">Cliquez sur "+ Ajouter un repas" pour commencer</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Apply filters
+            let filteredRecipes = [...allRecipes];
+            
+            // Type filter
+            const activeTypeBtn = document.querySelector('.filter-type-btn.active');
+            if (activeTypeBtn && activeTypeBtn.dataset.type !== 'all') {
+                filteredRecipes = filteredRecipes.filter(r => r.type === activeTypeBtn.dataset.type);
+            }
+            
+            // Nutrient filters (sliders)
+            const proteinMin = parseInt(document.getElementById('proteinMinSlider').value);
+            const proteinMax = parseInt(document.getElementById('proteinMaxSlider').value);
+            const fatMin = parseInt(document.getElementById('fatMinSlider').value);
+            const fatMax = parseInt(document.getElementById('fatMaxSlider').value);
+            const carbsMin = parseInt(document.getElementById('carbsMinSlider').value);
+            const carbsMax = parseInt(document.getElementById('carbsMaxSlider').value);
+            const caloriesMin = parseInt(document.getElementById('caloriesMinSlider').value);
+            const caloriesMax = parseInt(document.getElementById('caloriesMaxSlider').value);
+            
+            filteredRecipes = filteredRecipes.filter(r => {
+                const n = r.nutrition || {};
+                return (n.protein || 0) >= proteinMin && (n.protein || 0) <= proteinMax &&
+                       (n.fat || 0) >= fatMin && (n.fat || 0) <= fatMax &&
+                       (n.carbs || 0) >= carbsMin && (n.carbs || 0) <= carbsMax &&
+                       (n.calories || 0) >= caloriesMin && (n.calories || 0) <= caloriesMax;
+            });
+            
+            // Ingredient search filter
+            const ingredientSearchInput = document.getElementById('ingredientSearchFilter');
+            if (ingredientSearchInput && ingredientSearchInput.value.trim()) {
+                const searchTerm = ingredientSearchInput.value.toLowerCase().trim();
+                filteredRecipes = filteredRecipes.filter(r => {
+                    return (r.ingredients || []).some(ing => ing.toLowerCase().includes(searchTerm));
+                });
+            }
+            
+            recipesGrid.innerHTML = filteredRecipes.map(recipe => {
+                const nutrition = recipe.nutrition || {};
+                const typeLabels = {
+                    breakfast: 'Petit-déjeuner',
+                    lunch: 'Déjeuner',
+                    dinner: 'Dîner',
+                    unknown: 'Non spécifié'
+                };
+                
+                return `
+                    <div class="recipe-card" data-id="${recipe.id}">
+                        <div class="recipe-card-image">
+                            ${recipe.photoURL ? `<img src="${recipe.photoURL}" alt="${recipe.name}">` : '<div style="color: #b0b0b0;">Aucune photo</div>'}
+                        </div>
+                        <div class="recipe-card-content">
+                            <div class="recipe-card-title">${recipe.name}</div>
+                            <div class="recipe-card-type">${typeLabels[recipe.type] || typeLabels.unknown}</div>
+                            ${recipe.description ? `<div class="recipe-card-description">${recipe.description}</div>` : ''}
+                            ${recipe.ingredients && recipe.ingredients.length > 0 ? `
+                                <div style="font-size: 12px; color: #7f8c8d; margin-bottom: 12px;">
+                                    ${recipe.ingredients.slice(0, 3).join(', ')}${recipe.ingredients.length > 3 ? '...' : ''}
+                                </div>
+                            ` : ''}
+                            <div class="recipe-card-nutrients">
+                                <div class="nutrient-item">Protéines: <span class="nutrient-value">${nutrition.protein || 0}g</span></div>
+                                <div class="nutrient-item">Lipides: <span class="nutrient-value">${nutrition.fat || 0}g</span></div>
+                                <div class="nutrient-item">Glucides: <span class="nutrient-value">${nutrition.carbs || 0}g</span></div>
+                                <div class="nutrient-item">Calories: <span class="nutrient-value">${nutrition.calories || 0}kcal</span></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add click handlers
+            document.querySelectorAll('.recipe-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    openRecipeModal(card.dataset.id);
+                });
+            });
+        }
+
+        // Filter Type Buttons
+        filterTypeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterTypeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderRecipes();
+            });
+        });
+
+        // Filter Sliders
+        function setupFilterSlider(minId, maxId, minDisplayId, maxDisplayId) {
+            const minSlider = document.getElementById(minId);
+            const maxSlider = document.getElementById(maxId);
+            const minDisplay = document.getElementById(minDisplayId);
+            const maxDisplay = document.getElementById(maxDisplayId);
+            
+            function update() {
+                let minVal = parseInt(minSlider.value);
+                let maxVal = parseInt(maxSlider.value);
+                
+                if (minVal > maxVal) {
+                    [minVal, maxVal] = [maxVal, minVal];
+                    minSlider.value = minVal;
+                    maxSlider.value = maxVal;
+                }
+                
+                minDisplay.textContent = minVal;
+                maxDisplay.textContent = maxVal;
+                renderRecipes();
+            }
+            
+            minSlider.addEventListener('input', update);
+            maxSlider.addEventListener('input', update);
+        }
+
+        setupFilterSlider('proteinMinSlider', 'proteinMaxSlider', 'proteinFilterMin', 'proteinFilterMax');
+        setupFilterSlider('fatMinSlider', 'fatMaxSlider', 'fatFilterMin', 'fatFilterMax');
+        setupFilterSlider('carbsMinSlider', 'carbsMaxSlider', 'carbsFilterMin', 'carbsFilterMax');
+        setupFilterSlider('caloriesMinSlider', 'caloriesMaxSlider', 'caloriesFilterMin', 'caloriesFilterMax');
+
+        // Ingredient search filter
+        const ingredientSearchFilter = document.getElementById('ingredientSearchFilter');
+        if (ingredientSearchFilter) {
+            ingredientSearchFilter.addEventListener('input', () => {
+                renderRecipes();
+            });
+        }
     </script>
 </body>
 </html>
