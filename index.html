@@ -1123,6 +1123,10 @@
             color: #7f8c8d;
         }
 
+        .image-upload-container.has-image .image-upload-placeholder {
+            display: none;
+        }
+
         .image-upload-icon {
             font-size: 48px;
             margin-bottom: 8px;
@@ -1608,10 +1612,10 @@
                         <div class="slider-container">
                             <div class="slider-header">
                                 <span class="slider-label">Protéines</span>
-                                <span class="slider-values"><span id="proteinFilterMin">10</span>g - <span id="proteinFilterMax">100</span>g+</span>
+                                <span class="slider-values"><span id="proteinFilterMin">0</span>g - <span id="proteinFilterMax">100</span>g+</span>
                             </div>
                             <div class="range-input-container">
-                                <input type="range" class="range-input" id="proteinMinSlider" min="0" max="100" value="10">
+                                <input type="range" class="range-input" id="proteinMinSlider" min="0" max="100" value="0">
                                 <input type="range" class="range-input" id="proteinMaxSlider" min="0" max="100" value="100">
                             </div>
                         </div>
@@ -1619,10 +1623,10 @@
                         <div class="slider-container">
                             <div class="slider-header">
                                 <span class="slider-label">Lipides</span>
-                                <span class="slider-values"><span id="fatFilterMin">5</span>g - <span id="fatFilterMax">50</span>g+</span>
+                                <span class="slider-values"><span id="fatFilterMin">0</span>g - <span id="fatFilterMax">50</span>g+</span>
                             </div>
                             <div class="range-input-container">
-                                <input type="range" class="range-input" id="fatMinSlider" min="0" max="50" value="5">
+                                <input type="range" class="range-input" id="fatMinSlider" min="0" max="50" value="0">
                                 <input type="range" class="range-input" id="fatMaxSlider" min="0" max="50" value="50">
                             </div>
                         </div>
@@ -1630,10 +1634,10 @@
                         <div class="slider-container">
                             <div class="slider-header">
                                 <span class="slider-label">Glucides</span>
-                                <span class="slider-values"><span id="carbsFilterMin">10</span>g - <span id="carbsFilterMax">100</span>g+</span>
+                                <span class="slider-values"><span id="carbsFilterMin">0</span>g - <span id="carbsFilterMax">100</span>g+</span>
                             </div>
                             <div class="range-input-container">
-                                <input type="range" class="range-input" id="carbsMinSlider" min="0" max="100" value="10">
+                                <input type="range" class="range-input" id="carbsMinSlider" min="0" max="100" value="0">
                                 <input type="range" class="range-input" id="carbsMaxSlider" min="0" max="100" value="100">
                             </div>
                         </div>
@@ -1641,10 +1645,10 @@
                         <div class="slider-container">
                             <div class="slider-header">
                                 <span class="slider-label">Calories</span>
-                                <span class="slider-values"><span id="caloriesFilterMin">500</span> - <span id="caloriesFilterMax">1500</span>+ kcal</span>
+                                <span class="slider-values"><span id="caloriesFilterMin">0</span> - <span id="caloriesFilterMax">1500</span>+ kcal</span>
                             </div>
                             <div class="range-input-container">
-                                <input type="range" class="range-input" id="caloriesMinSlider" min="0" max="1500" step="50" value="500">
+                                <input type="range" class="range-input" id="caloriesMinSlider" min="0" max="1500" step="50" value="0">
                                 <input type="range" class="range-input" id="caloriesMaxSlider" min="0" max="1500" step="50" value="1500">
                             </div>
                         </div>
@@ -2397,26 +2401,49 @@
         recipeForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            // Validation stricte
+            const name = recipeName.value.trim();
+            const protein = parseInt(proteinValue.value) || 0;
+            const fat = parseInt(fatValue.value) || 0;
+            const carbs = parseInt(carbsValue.value) || 0;
+            const calories = parseInt(caloriesValue.value) || 0;
+            
+            // Get ingredients
+            const ingredients = Array.from(ingredientsList.querySelectorAll('.ingredient-input'))
+                .map(input => input.value.trim())
+                .filter(val => val);
+            
+            // Validation
+            if (!name) {
+                alert('⚠️ Le nom du plat est obligatoire.');
+                return;
+            }
+            
+            if (ingredients.length === 0) {
+                alert('⚠️ Ajoutez au moins un ingrédient.');
+                return;
+            }
+            
+            if (protein === 0 && fat === 0 && carbs === 0 && calories === 0) {
+                alert('⚠️ Les apports nutritionnels ne peuvent pas tous être à 0.');
+                return;
+            }
+            
             saveRecipeBtn.disabled = true;
             saveRecipeBtn.textContent = 'Sauvegarde...';
             
             try {
-                // Get ingredients
-                const ingredients = Array.from(ingredientsList.querySelectorAll('.ingredient-input'))
-                    .map(input => input.value.trim())
-                    .filter(val => val);
-                
                 // Prepare recipe data
                 const recipeData = {
-                    name: recipeName.value.trim(),
+                    name: name,
                     type: recipeType.value,
                     description: recipeDescription.value.trim(),
                     ingredients: ingredients,
                     nutrition: {
-                        protein: parseInt(proteinValue.value) || 0,
-                        fat: parseInt(fatValue.value) || 0,
-                        carbs: parseInt(carbsValue.value) || 0,
-                        calories: parseInt(caloriesValue.value) || 0
+                        protein: protein,
+                        fat: fat,
+                        carbs: carbs,
+                        calories: calories
                     },
                     updatedAt: new Date().toISOString()
                 };
